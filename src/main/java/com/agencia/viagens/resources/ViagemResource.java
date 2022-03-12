@@ -50,16 +50,8 @@ public class ViagemResource {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 	
-    @PutMapping("/viagem/{id}")
-    public ResponseEntity<Viagem> update(@PathVariable long id,@RequestBody Viagem viagemDetails) {
-    	Viagem updateViagem = viagemRepository.findById(id);
-
-    	updateViagem.setDestino(viagemDetails.getDestino());
-    	updateViagem.setValor(viagemDetails.getValor());
-    	updateViagem.setDataCadastro(viagemDetails.getDataCadastro());
-    	
-       viagemRepository.save(updateViagem);
-
-        return ResponseEntity.ok(updateViagem);
-    }
+	@PutMapping("/viagem")
+	public Viagem atualizarProduto(@RequestBody Viagem viagem) {
+		return viagemRepository.save(viagem);
+	}
 }
